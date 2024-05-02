@@ -1,6 +1,8 @@
 package com.solution.gestion_tache.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,8 +24,12 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank(message = "Erreur")
     private String nom;
+    @NotBlank(message = "Erreur")
     private String prenom;
+    @NotBlank(message = "Erreur")
+    @Email
     private String email;
     @ManyToOne
     Equipe equipe;

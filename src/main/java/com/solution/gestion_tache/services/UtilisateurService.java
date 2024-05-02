@@ -1,6 +1,7 @@
 package com.solution.gestion_tache.services;
 
 import com.solution.gestion_tache.entities.Utilisateur;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface UtilisateurService {
     void deletAllUtilisateur();
     Utilisateur getUtilisateurById(Long id);
     List<Utilisateur>getAllUtilisateurs();
+    Page<Utilisateur>getAllUtilisateurByPage(int page, int size);
 
 }

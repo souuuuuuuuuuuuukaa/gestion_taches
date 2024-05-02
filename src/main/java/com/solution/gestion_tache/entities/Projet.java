@@ -2,11 +2,13 @@ package com.solution.gestion_tache.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Projet {
     private int id;
     private String Nom;
     private String description;
+
     private Date Date_debut;
     private Date Date_fin;
     @OneToMany (mappedBy = "projet",fetch = FetchType.LAZY)

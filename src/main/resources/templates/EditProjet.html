@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="templat.html">
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Edit</title>
+</head>
+<body>
+<div layout:fragment="content">
+<main class="container mt-5">
+
+    <form th:action="@{update}" method="post">
+        <div class="form-group">
+            <label class="form-label" hidden="hidden" for="id">id: </label>
+            <input class="form-control" hidden="hidden" type="text" id="id" name="id" th:value="${projetView.id}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Nom">Nom : </label>
+            <input class="form-control" type="text" id="Nom" name="Nom" th:value="${projetView.Nom}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="description">Description : </label>
+            <input class="form-control" type="text" id="description" name="description" th:value="${projetView.description}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Date_Debut">Date de Debut : </label>
+            <input class="form-control" type="date" id="Date_Debut" name="Date_Debut" th:value="${projetView.Date_debut}">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Date_Fin">Email : </label>
+            <input class="form-control" type="date" id="Date_Fin" name="Date_Fin" th:value="${projetView.Date_fin}">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit" value="Update">
+        </div>
+    </form>
+
+</main>
+
+</div>
+</body>
+</html>

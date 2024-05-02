@@ -3,6 +3,8 @@ package com.solution.gestion_tache.services;
 import com.solution.gestion_tache.entities.Utilisateur;
 import com.solution.gestion_tache.reposirories.UtilisateurRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +16,13 @@ public class UtilisateurServiceImplimentation implements UtilisateurService{
     private UtilisateurRepository utilisateurRepository;
     @Override
     public Utilisateur saveUtilisateur(Utilisateur utilisateur) {
+
         return utilisateurRepository.save(utilisateur);
     }
 
     @Override
     public Utilisateur updateUtilisateur(Utilisateur utilisateur) {
+
         return utilisateurRepository.save(utilisateur);
     }
 
@@ -43,4 +47,10 @@ public class UtilisateurServiceImplimentation implements UtilisateurService{
     public List<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
     }
+
+    @Override
+    public Page<Utilisateur> getAllUtilisateurByPage(int page, int size) {
+        return utilisateurRepository.findAll(PageRequest.of(page,size));
+    }
+
 }
