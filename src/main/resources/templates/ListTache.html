@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> List Projet</title>
+    <title> List Des Taches</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -16,7 +16,8 @@
             <thead>
             <tr>
                 <th scope="col"> ID</th>
-                <th scope="col"> NOM</th>
+                <th scope="col"> TITRE</th>
+                <th scope="col"> STATUS</th>
                 <th scope="col"> DESCRIPTION</th>
                 <th scope="col"> DATE DE DEBUT </th>
                 <th scope="col"> DATE DE FIN </th>
@@ -25,24 +26,25 @@
             </thead>
             <tbody>
 
-            <tr th:each="projet:${projetsVue}">
-                <td th:text="${projet.id}"></td>
-                <td th:text="${projet.Nom}"></td>
-                <td th:text="${projet.description}"></td>
-                <td th:date="${projet.Date_debut}"></td>
-                <td th:date="${projet.Date_fin}"></td>
+            <tr th:each="tache:${tachesVue}">
+                <td th:text="${tache.id}"></td>
+                <td th:text="${tache.Titre}"></td>
+                <td th:text="${tache.description}"></td>
+                <td th:text="${tache.Status}"></td>
+                <td th:date="${tache.Date_debut}"></td>
+                <td th:date="${tache.Date_fin}"></td>
 
 
-                <td th:if="${#authorization.expression('hasRole(''Chef'')')}">
+                <td>
                     <a class="btn bg-danger"
                        onclick="return confirm('Are you sure to delete this customer ? ')"
-                       th:href="@{deleteprojet(id=${projet.id})}">
+                       th:href="@{deleteTache(id=${tache.id})}">
                         Delete
                     </a>
-                </td >
-                <td th:if="${#authorization.expression('hasRole(''Chef'')')}">
+                </td>
+                <td>
                     <a class="btn btn-success"
-                       th:href="@{EditProjet(id=${projet.id})}">
+                       th:href="@{EditTache(id=${tache.id})}">
                         Edit
                     </a>
                 </td>

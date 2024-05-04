@@ -18,11 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UtilisateurController {
     private UtilisateurService utilisateurService;
-    @RequestMapping("/connexion")
-    public String connexion(){
-        String connexion = "Connexion";
-        return connexion;
-    }
+
     @RequestMapping("/createUtilisateur")
     public String createUtilisateur()
     {

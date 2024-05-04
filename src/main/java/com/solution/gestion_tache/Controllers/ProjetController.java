@@ -50,15 +50,19 @@ public class ProjetController {
         String listprojet = "ListProjet";
         return listprojet;
     }
-
-
     @RequestMapping("/deleteprojet")
     public String deleteprojet(@RequestParam("id")Long id, ModelMap modelMap){
         projetService.deleteProjetById(id);
         return listprojet(modelMap);
     }
- /*   @RequestMapping("/update")
-    public String update(@ModelAttribute("projetsVue") Projet projetController){
+    @RequestMapping("/EditProjet")
+    public String EditProjet(@RequestParam("id")Long id, ModelMap modelMap){
+        Projet projetcontroller= projetService.getProjetById(id);
+        modelMap.addAttribute("projetView",projetcontroller);
+        return "EditProjet";
+    }
+  /*  @RequestMapping("/update")
+    public String update(@ModelAttribute("projectsVue") Projet projetController){
         projetService.updateProjet(projetController);
         return createprojet();
     }*/

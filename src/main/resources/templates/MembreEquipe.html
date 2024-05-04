@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers List</title>
+    <title>Equipe</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -29,7 +29,7 @@
             <td th:text="${utilisateur.prenom}"></td>
             <td th:text="${utilisateur.email}"></td>
 
-            <td>
+            <td th:if="${#authorization.expression('hasRole(''Chef'')')}">
                 <a class="btn bg-danger"
                    onclick="return confirm('Are you sure to delete this customer ? ')"
                    th:href="@{deleteUser(id=${utilisateur.id})}">

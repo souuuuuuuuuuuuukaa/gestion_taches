@@ -21,32 +21,40 @@ public class SecurityConfig {
 
 
 
- @Bean
+ /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
          httpSecurity.formLogin(Customizer.withDefaults());
          return httpSecurity.build();
-    }
-   /* @Bean
-    public SecurityFilterChain SecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(
-                        authCustomizer -> authCustomizer
-                                .requestMatchers("/deleteUser","update","saveUser","createUtilisateur").hasRole("chefProjet")
-                                .requestMatchers("/membreequipe").hasRole("Developpeur")
-                                .requestMatchers("/membreequipe").hasAnyRole("Developpeur","chefProjet")
-                                .anyRequest().authenticated()
-
-                )
-                .build();
     }*/
 
     @Bean
+    public SecurityFilterChain SecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+              //  .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults())
+                .authorizeHttpRequests(
+                        authCustomizer -> authCustomizer
+                                .requestMatchers("/deleteUser","update","saveUser","createUtilisateur","createprojet","saveProjet","deleteprojet","EditProjet").hasRole("Chef de projet")
+                                .requestMatchers("/membreequipe","listprojet","listtache","createtache","deleteTache","saveTache","EditTache").hasAnyRole("Chef de projet","Developpeur")
+                                .requestMatchers("/login","/webjars/**").permitAll()
+                             //   .requestMatchers("/membreequipe").hasAnyRole("Chef","DEV")
+                                .anyRequest().authenticated()
+
+                )
+                .formLogin(
+                        formLogin -> formLogin
+                                .loginPage("/login")
+                                .defaultSuccessUrl("/")
+                )
+                .exceptionHandling(e->e.accessDeniedPage("/accessDenied"))
+                .build();
+    }
+
+    //@Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
         return new InMemoryUserDetailsManager(
-                User.withUsername("Chef de projet").password(bCryptPasswordEncoder().encode("123")).roles("Chef").build(),
-                User.withUsername("Developpeur").password(bCryptPasswordEncoder().encode("123")).roles("DEV").build()
+                User.withUsername("Chef de projet").password(bCryptPasswordEncoder().encode("123")).roles("Chef de projet").build(),
+                User.withUsername("Developpeur").password(bCryptPasswordEncoder().encode("123")).roles("Developpeur").build()
 
 
         );

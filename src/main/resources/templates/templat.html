@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
 <head>
     <meta charset="UTF-8">
     <title>Customer Management</title>
@@ -17,7 +17,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Utilisateurs</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{createUtilisateur}">New</a></li>
+                <li th:if="${#authorization.expression('hasRole(''Chef de projet'')')}">
+                    <a class="dropdown-item" th:href="@{createUtilisateur}">New</a>
+                </li>
                 <li><a class="dropdown-item" th:href="@{membreequipe}">List</a></li>
             </ul>
         </li>
@@ -25,8 +27,24 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projet</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{createprojet}">New</a></li>
-                <li><a class="dropdown-item" th:href="@{listprojet}">List</a></li>
+                <li th:if="${#authorization.expression('hasRole(''Chef de projet'')')}">
+                    <a class="dropdown-item" th:href="@{createprojet}">New</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" th:href="@{listprojet}">List</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tache </a>
+            <ul class="dropdown-menu">
+                <li >
+                    <a class="dropdown-item" th:href="@{createtache}">New</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" th:href="@{listtache}">List</a>
+                </li>
             </ul>
         </li>
 
@@ -35,11 +53,10 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" th:text="${#authentication.name}">[username]</a>
             <ul class="dropdown-menu">
-                <a class="dropdown-item" href="#">login</a>
+<!--                <a class="dropdown-item" href="#">login</a>-->
                 <form method="post" th:action="@{/logout}">
                     <button class="dropdown-item" type="submit">logout</button>
                 </form>
-
             </ul>
         </li>
     </ul>

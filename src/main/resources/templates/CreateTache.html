@@ -8,27 +8,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Creation de projet </title>
+    <title> Creation de Tache</title>
 </head>
 <body>
 <div layout:fragment="content">
     <main class="container mt-5">
-        <form th:action="@{saveProjet}" method="post">
+        <form th:action="@{saveTache}" method="post">
             <div class="form-group">
-                <label  class="form-label" for="nom">Nom : </label>
-                <input class="form-control" type="text" id="nom" name="nom">
+                <label  class="form-label" for="Titre">Titre : </label>
+                <input class="form-control" type="text" id="Titre" name="Titre">
             </div>
             <div class="form-group">
                 <label class="form-label" for="Description">Description:</label>
-                <input class="form-control" type="text" id="Description" name="Description">
+                <input class="form-control" type="text" id="Description" name="description">
             </div>
             <div class="form-group">
-                <label class="form-label" for="Date_Debut">Date de Debut : </label>
-                <input class="form-control" type="date" id="Date_Debut" name="Date_Debut">
+                <label class="form-label" for="Status">Status:</label>
+                <input class="form-control" type="text" id="Status" name="Status">
             </div>
             <div class="form-group">
-                <label class="form-label" for="Date_Fin">Date de Fin : </label>
-                <input class="form-control" type="date" id="Date_Fin" name="Date_Fin">
+                <label class="form-label" for="Date_debut">Date de Debut : </label>
+                <input class="form-control" type="date" id="Date_debut" name="Date_debut">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="Date_fin">Date de Fin : </label>
+                <input class="form-control" type="date" id="Date_fin" name="Date_fin">
             </div>
 
             <div class="form-group">

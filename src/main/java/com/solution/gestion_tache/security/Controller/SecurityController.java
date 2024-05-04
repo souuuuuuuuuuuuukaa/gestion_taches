@@ -8,6 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SecurityController {
     @GetMapping("/")
     public String home(){
-        return "redirect:/createUtilisateur";
+        return "redirect:/listprojet";
+    }
+
+    @GetMapping("/accessDenied")
+    public String accessDenied(){
+        return "/accessDenied";
+    }
+    @GetMapping("/login")
+    public String login(){
+        return "Login";
     }
 }
