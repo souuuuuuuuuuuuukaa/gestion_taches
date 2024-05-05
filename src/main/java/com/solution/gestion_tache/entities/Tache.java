@@ -1,6 +1,5 @@
 package com.solution.gestion_tache.entities;
 
-import com.solution.gestion_tache.enums.StatusTache;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,7 @@ public class Tache {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private StatusTache statusTache = StatusTache.A_faire;
+    private String Statut;
     private String Titre;
     private String description;
     private Date Date_debut;

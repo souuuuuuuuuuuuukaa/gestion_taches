@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+/*utilisée pour indiquer que la classe remplit un rôle de service dans l'application,
+ généralement en implémentant une logique métier spécifique.*/
 public interface ProjetService {
     Projet saveProjet (Projet projet);
     Projet updateProjet (Projet projet);

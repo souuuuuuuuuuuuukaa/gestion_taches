@@ -27,11 +27,11 @@ public class UtilisateurController {
     }
 
    @RequestMapping("/membreequipe")
-    public String membres(ModelMap modelMap){
+    public String membreequipe(ModelMap modelMap){
         List<Utilisateur>utilisateurList=utilisateurService.getAllUtilisateurs();
         modelMap.addAttribute("utilisateursVue",utilisateurList );
-        String membreequipe = "MembreEquipe";
-        return membreequipe;
+        //String membreequipe = "MembreEquipe";
+        return "MembreEquipe";
     }
 /*    @RequestMapping("/membreequipe")
     public String membres(ModelMap modelMap,
@@ -48,13 +48,13 @@ public class UtilisateurController {
     public String saveUser(@Valid Utilisateur utilisateursController, BindingResult bindingResult){
         if (bindingResult.hasErrors()) return "CreateUser";
         Utilisateur saveUser =utilisateurService.saveUtilisateur(utilisateursController);
-        String createUtilisateur = "CreateUser";
-        return createUtilisateur;
+        //String createUtilisateur = "CreateUser";
+        return "createUser";
     }
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("id")Long id, ModelMap modelMap){
         utilisateurService.deletUtilisateurById(id);
-        return membres(modelMap);
+        return membreequipe(modelMap);
     }
     @RequestMapping("/update")
     public String update(@ModelAttribute("utilisateursVue")Utilisateur utilisateursController){

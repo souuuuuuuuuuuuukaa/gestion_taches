@@ -32,10 +32,9 @@
                 <td th:date="${projet.Date_debut}"></td>
                 <td th:date="${projet.Date_fin}"></td>
 
-
                 <td th:if="${#authorization.expression('hasRole(''Chef'')')}">
                     <a class="btn bg-danger"
-                       onclick="return confirm('Are you sure to delete this customer ? ')"
+                       onclick="return confirm('Are you sure to delete this projet ? ')"
                        th:href="@{deleteprojet(id=${projet.id})}">
                         Delete
                     </a>

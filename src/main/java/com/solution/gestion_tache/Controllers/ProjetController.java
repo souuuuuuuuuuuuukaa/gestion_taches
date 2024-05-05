@@ -1,9 +1,8 @@
 package com.solution.gestion_tache.Controllers;
-
 import com.solution.gestion_tache.entities.Projet;
 import com.solution.gestion_tache.entities.Utilisateur;
 import com.solution.gestion_tache.services.ProjetService;
-import jakarta.validation.Valid;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,18 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@AllArgsConstructor //pour injecter les dependances
 
+// le controller ne parle pas au repository il parle au service
 public class ProjetController {
 
-    private ProjetService projetService;
+    private ProjetService projetService; //autowired
 
-    @RequestMapping("/createprojet")
+    //je cree mtn la methode createprojet de jsp (html) dans le controller
+    @RequestMapping("/createprojet") // si l url aie /createprojet il doit executer cette methode
     public String createprojet()
     {
-        String createprojet = "CreateProject"; //page html
-        return createprojet;
+        //String createprojet = "CreateProject"; //page html
+        return "CreateProject" ;
     }
+
    /*
    //POUR NE PAS AVOIR DES CHANPS VIDE
 
@@ -38,22 +40,26 @@ public class ProjetController {
         return createprojet;
     }*/
   @RequestMapping("saveProjet")
-    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller){
+    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller)
+    //contient l'objet projetVue qui vient du formulaire et le mettre dans une var maniabe dans controlleur projetController
+  {
         Projet saveprojet = projetService.saveProjet(projetcontroller);
-        String createprojet = "CreateProject";
-        return createprojet;
+        //String createprojet = "CreateProject";
+        return "CreateProject" ;
     }
  @RequestMapping("/listprojet")
     public String listprojet(ModelMap modelMap){
         List<Projet> projets=projetService.getAllProjet();
         modelMap.addAttribute("projetsVue",projets );
-        String listprojet = "ListProjet";
-        return listprojet;
+     // String listprojet = "ListProjet";
+        return "ListProjet";
     }
     @RequestMapping("/deleteprojet")
-    public String deleteprojet(@RequestParam("id")Long id, ModelMap modelMap){
+    public String deleteprojet(@RequestParam("id")Long id , ModelMap modelMap){
         projetService.deleteProjetById(id);
+        // String listprojet = "ListProjet";
         return listprojet(modelMap);
+
     }
     @RequestMapping("/EditProjet")
     public String EditProjet(@RequestParam("id")Long id, ModelMap modelMap){
