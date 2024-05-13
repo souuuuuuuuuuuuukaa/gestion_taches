@@ -18,6 +18,6 @@ import java.util.List;
 public class chefProjet extends Utilisateur{
 
     private int id;
-    @OneToMany(mappedBy = "chef",fetch = FetchType.LAZY)
-    private List<Projet>projet=new ArrayList<>();
+/*    @OneToMany(mappedBy = "chef",fetch = FetchType.LAZY)
+    private List<Projet>projet=new ArrayList<>();*/
 }

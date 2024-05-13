@@ -18,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 public class UtilisateurController {
     private UtilisateurService utilisateurService;
-
     @RequestMapping("/createUtilisateur")
     public String createUtilisateur()
     {

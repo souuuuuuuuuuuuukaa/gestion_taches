@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,7 @@ import java.util.List;
 public class ProjetController {
 
     private ProjetService projetService;
+
 
     @RequestMapping("/createprojet")
     public String createprojet()
@@ -37,12 +41,18 @@ public class ProjetController {
         String createprojet = "CreateProject"; //page html
         return createprojet;
     }*/
+
+
+
   @RequestMapping("saveProjet")
-    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller){
+    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller )  {
+
         Projet saveprojet = projetService.saveProjet(projetcontroller);
         String createprojet = "CreateProject";
         return createprojet;
     }
+
+
  @RequestMapping("/listprojet")
     public String listprojet(ModelMap modelMap){
         List<Projet> projets=projetService.getAllProjet();
@@ -61,11 +71,11 @@ public class ProjetController {
         modelMap.addAttribute("projetView",projetcontroller);
         return "EditProjet";
     }
-  /*  @RequestMapping("/update")
+   @RequestMapping("/updateprojet")
     public String update(@ModelAttribute("projectsVue") Projet projetController){
         projetService.updateProjet(projetController);
         return createprojet();
-    }*/
+    }
 }
 
 

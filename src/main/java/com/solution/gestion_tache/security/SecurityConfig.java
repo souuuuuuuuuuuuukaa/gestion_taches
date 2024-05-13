@@ -34,8 +34,8 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         authCustomizer -> authCustomizer
-                                .requestMatchers("/deleteUser","update","saveUser","createUtilisateur","createprojet","saveProjet","deleteprojet","EditProjet").hasRole("Chef de projet")
-                                .requestMatchers("/membreequipe","listprojet","listtache","createtache","deleteTache","saveTache","EditTache").hasAnyRole("Chef de projet","Developpeur")
+                                .requestMatchers("/deleteUser","updateprojet","saveUser","createUtilisateur","createprojet","saveProjet","deleteprojet","EditProjet").hasRole("Chef de projet")
+                                .requestMatchers("/membreequipe","listprojet","updatetache","listtache","createtache","deleteTache","saveTache","EditTache").hasAnyRole("Chef de projet","Developpeur")
                                 .requestMatchers("/login","/webjars/**").permitAll()
                              //   .requestMatchers("/membreequipe").hasAnyRole("Chef","DEV")
                                 .anyRequest().authenticated()
