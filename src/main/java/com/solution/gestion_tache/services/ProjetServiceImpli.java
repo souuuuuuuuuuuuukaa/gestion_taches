@@ -7,16 +7,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@AllArgsConstructor
+@AllArgsConstructor //cette ligne
 public class ProjetServiceImpli implements ProjetService{
-    private ProjetRepository projetRepository;
+    private ProjetRepository projetRepository; //et cette ligne
+    /*remplacent @Autowired qui fait l'injection des dependances dans les beans automatiquement*/
     @Override
     public Projet saveProjet(Projet projet) {
+
         return projetRepository.save(projet);
     }
 
     @Override
     public Projet updateProjet(Projet projet) {
+
         return projetRepository.save(projet);
     }
 
@@ -28,16 +31,19 @@ public class ProjetServiceImpli implements ProjetService{
 
     @Override
     public void deleteProjet() {
+
         projetRepository.deleteAll();
     }
 
     @Override
     public Projet getProjetById(Long id) {
+
         return projetRepository.findById(id).get();
     }
 
     @Override
     public List<Projet> getAllProjet() {
+
         return projetRepository.findAll();
     }
 }
