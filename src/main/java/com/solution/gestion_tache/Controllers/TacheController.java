@@ -52,7 +52,6 @@ public class TacheController {
     @RequestMapping("/listtache")
     public String listtache(ModelMap modelMap){
         List<Tache> taches=tacheService.getAllTache();
-
         modelMap.addAttribute("tacheVue",taches );
         return "ListTache";
     }

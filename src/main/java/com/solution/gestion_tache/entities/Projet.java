@@ -4,12 +4,21 @@ package com.solution.gestion_tache.entities;
 import com.solution.gestion_tache.enums.StatusProjet;
 import com.solution.gestion_tache.enums.StatusTache;
 import jakarta.persistence.*;
+
 import jakarta.validation.constraints.NotNull;
+
+import jakarta.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+
+
+import java.text.DateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;

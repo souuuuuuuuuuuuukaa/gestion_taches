@@ -17,7 +17,7 @@ public class GestionTacheApplication {
     public CommandLineRunner commandLineRunner(AccountService accountService){
 
         return args -> {
-            /* accountService.createUser("Developpeur","1234","dev@gmail.com","1234");
+          accountService.createUser("Developpeur","1234","dev@gmail.com","1234");
             accountService.createUser("Chef de projet","1234","chef@gmail.com","1234");
 
             accountService.createRole("Chef de projet");
@@ -28,7 +28,7 @@ public class GestionTacheApplication {
             accountService.addRoleToUser("Chef de projet","Developpeur");
 
             accountService.removeRoleFromUser("Chef de projet","Developpeur");
-       */
+
             System.out.println(accountService.loadUserByNom("Developpeur").getEmail());
         } ;
 

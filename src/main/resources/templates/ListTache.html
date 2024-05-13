@@ -185,7 +185,6 @@
                 <tbody>
 
                 <tr th:each="tache:${tacheVue}">
-<!--                    <div th:if="${tache.projet.id == 16}">-->
                         <td th:text="${tache.id}"></td>
                         <td th:text="${tache.Titre}"></td>
                         <td th:text="${tache.description}"></td>
@@ -195,21 +194,7 @@
                         <td th:text="${tache.projet.nom}"></td>
                         <td th:text="${tache.utilisateur.nom}"></td>
 
-                   <!-- </div>
-                    <br>
 
-                    <div th:if="${tache.projet.id == 17}">
-
-                        <td th:text="${tache.id}"></td>
-                        <td th:text="${tache.Titre}"></td>
-                        <td th:text="${tache.description}"></td>
-                        <td th:text="${tache.statusTache}"></td>
-                        <td th:text="${tache.Date_debut}"></td>
-                        <td th:text="${tache.Date_fin}"></td>
-                        <td th:text="${tache.projet.nom}"></td>
-                        <td th:text="${tache.utilisateur.nom}"></td>
-
-                    </div>-->
                     <td>
                         <a class="btn bg-danger"
                            onclick="return confirm('Are you sure to delete this task? ')"
