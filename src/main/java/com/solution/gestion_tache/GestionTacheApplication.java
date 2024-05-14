@@ -13,11 +13,11 @@ public class GestionTacheApplication {
     public static void main(String[] args) {
         SpringApplication.run(GestionTacheApplication.class, args);
         }
-    @Bean
+    @Bean //definit une methode qui retourne un bean (objet java)
     public CommandLineRunner commandLineRunner(AccountService accountService){
 
         return args -> {
-          accountService.createUser("Developpeur","1234","dev@gmail.com","1234");
+        accountService.createUser("Developpeur","1234","dev@gmail.com","1234");
             accountService.createUser("Chef de projet","1234","chef@gmail.com","1234");
 
             accountService.createRole("Chef de projet");

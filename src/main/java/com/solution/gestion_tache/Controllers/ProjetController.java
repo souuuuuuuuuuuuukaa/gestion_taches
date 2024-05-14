@@ -42,7 +42,7 @@ public class ProjetController {
 
   @RequestMapping("saveProjet")
 
-    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller )  {
+    public String saveProjet(@ModelAttribute("projetVue")Projet projetcontroller )  { //ModelAttribute lier les donnes envoyer via requet HTTP avec Methode d'un controller
 
         Projet saveprojet = projetService.saveProjet(projetcontroller);
         //String createprojet = "CreateProject";

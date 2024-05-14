@@ -1,9 +1,11 @@
 package com.solution.gestion_tache.services;
 
 
+import com.solution.gestion_tache.entities.Projet;
 import com.solution.gestion_tache.entities.Tache;
 import com.solution.gestion_tache.reposirories.TachesRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,4 +44,8 @@ public class TacheServiceImpli implements TacheService{
     public List<Tache> getAllTache() {
         return tachesRepository.findAll();
     }
+
+
+
+
 }

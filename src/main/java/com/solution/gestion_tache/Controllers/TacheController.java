@@ -21,12 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@AllArgsConstructor /*genere const avec param de type TacheService ce qui signifie que la depandence de TacheService sera injectee automatiquement dans controleur*/
 public class TacheController {
      private TacheService tacheService;
     @Autowired
     private ProjetRepository projetRepository;
-
     @Autowired
     private UtilisateurRepository utilisateurRepository;
     @Autowired
@@ -35,17 +34,21 @@ public class TacheController {
     private UtilisateurService utilisateurService;
 
     @RequestMapping("/createtache")
-    public String createtache(ModelMap modelMap)
+    public String createtache(ModelMap modelMap) //modelmap attribut de type ModelMap qui est un objet de  spring  qui lie les element de vue et controller
     {
         List<Projet> projets=projetService.getAllProjet();
         modelMap.addAttribute("projetsVue",projets );
-        List<Utilisateur>utilisateurList=utilisateurService.getAllUtilisateurs();
-        modelMap.addAttribute("utilisateursVue",utilisateurList );
+        List<Utilisateur>utilisateurList=utilisateurService.getAllUtilisateurs(); //list des utilisateurs de controller
+        modelMap.addAttribute("utilisateursVue",utilisateurList ); // affiche utilisateurList dans utilisateursVue
         String createtache ="CreateTache";
         return createtache;
     }
     @RequestMapping("saveTache")
-    public String saveTache(@ModelAttribute("tacheVue") Tache tachecontroller){
+    public String saveTache(@ModelAttribute("tacheVue") Tache tachecontroller ,ModelMap modelMap){
+        List<Projet> projets=projetService.getAllProjet();
+        modelMap.addAttribute("projetsVue",projets );
+        List<Utilisateur>utilisateurList=utilisateurService.getAllUtilisateurs(); //list des utilisateurs de controller
+        modelMap.addAttribute("utilisateursVue",utilisateurList );
         Tache savetache = tacheService.saveTache(tachecontroller);
         return "CreateTache";
     }
@@ -64,6 +67,10 @@ public class TacheController {
     public String EditTache(@RequestParam("id")Long id, ModelMap modelMap){
         Tache tachecontroller= tacheService.getTacheById(id);
         modelMap.addAttribute("tacheView",tachecontroller);
+        List<Projet> projets=projetService.getAllProjet();
+        modelMap.addAttribute("projetsVue",projets );
+        List<Utilisateur>utilisateurList=utilisateurService.getAllUtilisateurs(); //list des utilisateurs de controller
+        modelMap.addAttribute("utilisateursVue",utilisateurList );
         return "EditTache";
     }
     @RequestMapping("/updatetache")
@@ -71,6 +78,8 @@ public class TacheController {
       tacheService.saveTache(tacheController);
         return "CreateTache";
     }
+
+
     @RequestMapping(value = "/formTache", method = RequestMethod.GET)
     public String afficherFormulaireTache(Model model) {
         model.addAttribute("projets", projetRepository.findAll());

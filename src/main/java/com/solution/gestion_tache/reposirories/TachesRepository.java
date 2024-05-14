@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TachesRepository extends JpaRepository<Tache,Long> {
+
 }

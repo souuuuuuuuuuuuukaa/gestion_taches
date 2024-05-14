@@ -7,3 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EquipeRepository extends JpaRepository<Equipe,Long> {
 }
+//definir des methode pour l'interaction entre entity et  base base donnee

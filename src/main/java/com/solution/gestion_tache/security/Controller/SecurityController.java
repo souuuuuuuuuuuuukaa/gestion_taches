@@ -19,8 +19,5 @@ public class SecurityController {
     public String login(){
         return "Login";
     }
-    @GetMapping("/hom11")
-    public String hom(){
-        return "index";
-    }
+
 }
